@@ -14,7 +14,7 @@ const Clock = () => {
     }
   }, [])
 
-  return <h2 className='time'>{date.toLocaleTimeString('ru-RU')}</h2>
+  return <time className='time'>{date.toLocaleTimeString('ru-RU')}</time>
 }
 
 export default Clock

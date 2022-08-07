@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 const Greeting = () => {
+  //date
   const [date, setDate] = useState(new Date());
 
   const showGreeting = () => {
@@ -22,7 +23,7 @@ const Greeting = () => {
 
   const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay(hours));
 
-  const greetingText = `Good ${timeOfDay}!`;
+  const greetingText = `Good ${timeOfDay}, `;
 
   useEffect(() => {
     const timerId = setInterval(refreshClock, 1000);
@@ -34,7 +35,12 @@ const Greeting = () => {
     }
   }, [])
 
-  return <h2 className='greeting'>{greetingText}</h2>
+  return (
+    <div className='greeting-container'>
+      <span className='greeting'>{greetingText}</span>
+      <input className='name' type="text" placeholder='[Enter name]'/>
+    </div>
+  )
 }
 
 export default Greeting;
