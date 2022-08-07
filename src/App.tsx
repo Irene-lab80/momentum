@@ -5,11 +5,8 @@ import Clock from './Clock'
 function App() {
   return (
     <div className='App'>
-      <header className='App-header'>
-        <h1>Momentum</h1>
-        <Clock />
-      </header>
-      <body></body>
+      <h1>Momentum</h1>
+      <Clock />
     </div>
   )
 }
