@@ -23,22 +23,34 @@ const Greeting = () => {
 
   const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay(hours));
 
-  const greetingText = `Good ${timeOfDay}, `;
+  const greetingText = `Good ${timeOfDay},`;
 
   useEffect(() => {
     const timerId = setInterval(refreshClock, 1000);
-    const timeOfDayId = setInterval(showGreeting, 1000);
-
     return function cleanup() {
       clearInterval(timerId);
+    }
+  }, [])
+
+  useEffect(() => {
+    const timeOfDayId = setInterval(showGreeting, 1000);
+    return function cleanup() {
       clearInterval(timeOfDayId);
     }
   }, [])
 
+  const [name, setName] = useState(() => {
+    const saved = localStorage.getItem("name") as string;
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });  useEffect(() => {
+    localStorage.setItem("name", JSON.stringify(name));
+  }, [name]);
+
   return (
     <div className='greeting-container'>
       <span className='greeting'>{greetingText}</span>
-      <input className='name' type="text" placeholder='[Enter name]'/>
+      <input className='name' type="text" placeholder='[Enter name]' value={name} onChange={(e) => setName(e.target.value)}/>
     </div>
   )
 }
