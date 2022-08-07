@@ -2,13 +2,15 @@ import React from 'react';
 import './App.scss';
 import Clock from './Clock';
 import Date from './Date';
+import Greeting from './Greeting';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <h1>Momentum</h1>
       <Clock />
       <Date />
+      <Greeting />
     </div>
   );
 }
