@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
-const Greeting = () => {
-  //date
-  const [date, setDate] = useState(new Date());
+type ClockType = {
+  date: Date;
+}
 
+const Greeting = ({date}: ClockType) => {
+  //date
   const showGreeting = () => {
     setTimeOfDay(timeOfDay);
-  }
-
-  function refreshClock() {
-    setDate(new Date());
   }
 
   const hours = date.getHours();
@@ -24,13 +22,6 @@ const Greeting = () => {
   const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay(hours));
 
   const greetingText = `Good ${timeOfDay},`;
-
-  useEffect(() => {
-    const timerId = setInterval(refreshClock, 1000);
-    return function cleanup() {
-      clearInterval(timerId);
-    }
-  }, [])
 
   useEffect(() => {
     const timeOfDayId = setInterval(showGreeting, 1000);

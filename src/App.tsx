@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import Clock from './Clock';
 import CurrentDate from './CurrentDate';
 import Greeting from './Greeting';
 
 const App = () => {
+  const [date, setDate] = useState(new Date());
+
+  function refreshClock() {
+    setDate(new Date());
+  }
+
+  useEffect(() => {
+    const timerId = setInterval(refreshClock, 1000);
+    return function cleanup() {
+      clearInterval(timerId);
+    }
+  }, [])
+
   return (
     <div className="App">
       <h1>Momentum</h1>
       <main className='main'>
-        <Clock />
-        <CurrentDate />
-        <Greeting />
+        <Clock date={date} />
+        <CurrentDate date={date} />
+        <Greeting date={date} />
       </main>
     </div>
   );
