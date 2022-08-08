@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const Clock = () => {
+const CurrentDate = () => {
   const [date, setDate] = useState(new Date())
 
   function refreshClock() {
@@ -22,4 +22,4 @@ const Clock = () => {
   return <h2 className='date'>{date.toLocaleDateString('ru-RU', options)}</h2>
 }
 
-export default Clock
+export default CurrentDate;

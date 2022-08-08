@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Clock from './Clock';
-import Date from './Date';
+import CurrentDate from './CurrentDate';
 import Greeting from './Greeting';
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
       <h1>Momentum</h1>
       <main className='main'>
         <Clock />
-        <Date />
+        <CurrentDate />
         <Greeting />
       </main>
     </div>
