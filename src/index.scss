@@ -9,23 +9,32 @@ html {
 }
 
 body {
-  min-width: 480px;
-  height: 100vh;
+  // min-width: 480px;
+  // height: 100vh;
   font-family: 'Arial', sans-serif;
   font-size: 16px;
   color: #fff;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
-  background-image: url("./bg.jpg");
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-blend-mode: multiply;
-  transition: background-image 1s ease-in-out;
+  // background-image: url("./bg.jpg");
+  // background-position: top center;
+  // background-repeat: no-repeat;
+  // background-blend-mode: multiply;
+  // transition: background-image 1s ease-in-out;
 
+
+}
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  z-index: 100;
 }
 
 .time {
@@ -74,6 +83,14 @@ body {
   color: #fff;
   opacity: .6;
 }
+
+.bg {
+  height: 160px;
+  color: #fff;
+  line-height: 160px;
+  text-align: center;
+  background: #364d79;
+};
 
 @media (max-width: 768px) {
   .time {
