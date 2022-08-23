@@ -1,16 +1,17 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { memo } from 'react';
 import { css, jsx } from '@emotion/react';
 
 type SlideType ={
   content: any;
+  width: any
 }
 
-const Slide = ({ content }: SlideType) => (
+const Slide = ({ content, width }: SlideType) => (
   <div
     css={css`
       height: 100;
-      width: 100%;
+      width: ${width}px;
       background-image: url('${content}');
       background-size: cover;
       background-repeat: no-repeat;
@@ -19,4 +20,4 @@ const Slide = ({ content }: SlideType) => (
   />
 )
 
-export default Slide
+export default memo(Slide)

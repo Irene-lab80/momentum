@@ -9,17 +9,17 @@ type SliderContentType ={
   children: React.ReactNode;
 }
 
-const SliderContent: React.FC<SliderContentType> = ({translate, transition, width, children}) => (
+const SliderContent = (props: any) => (
   <div
     css={css`
-      transform: translateX(-${translate}px);
-      transition: transform ease-out ${transition}s;
+      transform: translateX(-${props.translate}px);
+      transition: transform ease-out ${props.transition}s;
       height: 100%;
-      width: ${width}px;
+      width: ${props.width}px;
       display: flex;
     `}
   >
-    {children}
+    {props.children}
   </div>
 )
 
