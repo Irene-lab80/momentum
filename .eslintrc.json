@@ -4,11 +4,8 @@
     "es2021": true
   },
   "extends": [
-    // "airbnb",
-    "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
-    // , "prettier"
+    "airbnb"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -20,12 +17,45 @@
   },
   "plugins": [
     "react",
-    "react-hooks",
     "@typescript-eslint"
-    // , "prettier"
   ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
+  },
   "rules": {
-    // "react/jsx-filename-extension": "off",
-    // "import/extensions": "off"
+    "import/extensions": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
+    "comma-dangle": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "react/function-component-definition": [
+      "warn",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "linebreak-style": "off",
+    "react/no-unused-prop-types": "warn",
+    "no-unused-vars": "warn",
+    "object-curly-newline": "warn",
+    "react/jsx-wrap-multilines": "warn",
+    "default-param-last": "warn",
+    "import/no-unresolved": "warn",
+    "no-console": "warn"
   }
 }

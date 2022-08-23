@@ -21,13 +21,21 @@ body {
   // background-repeat: no-repeat;
   // background-blend-mode: multiply;
   // transition: background-image 1s ease-in-out;
+}
 
+button {
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+}
 
+button:hover {
+  opacity: .8;
 }
 
 .main {
-  height: 100vh;
-  width: 100vw;
+  height: 60vh;
+  width: 60vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
