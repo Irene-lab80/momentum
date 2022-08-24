@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
-import Clock from './Clock';
-import CurrentDate from './CurrentDate';
-import Greeting from './Greeting';
-import ImageSlider from './components/slider/ImageSlider';
+import Clock from './components/common/Clock';
+import CurrentDate from './components/common/CurrentDate';
+import Greeting from './components/common/Greeting';
+import ImageSlider from './components/common/Slider/ImageSlider';
 
 const App = () => {
   const [date, setDate] = useState(new Date());
