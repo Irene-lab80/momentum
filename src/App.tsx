@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import './App.scss';
 import Clock from './components/common/Clock';
 import CurrentDate from './components/common/CurrentDate';
 import Greeting from './components/common/Greeting';
 import ImageSlider from './components/common/Slider/ImageSlider';
+import GlobalStyles from './styles/global';
 
 const App = () => {
   const [date, setDate] = useState(new Date());
@@ -33,6 +33,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <GlobalStyles />
       <main className="main">
         <Clock date={date} />
         <CurrentDate date={date} />
