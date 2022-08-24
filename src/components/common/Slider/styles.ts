@@ -1,27 +1,5 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-// export const ButtonLeft = styled.button`
-//   position: absolute;
-//   top: 50%;
-//   transform: translate(0, -50%);
-//   left: 32px;
-//   z-index: 10;
-//   cursor: pointer;
-//   opacity: 0.8;
-//   padding: 10px;
-// `;
-
-// export const ButtonRight = styled.button`
-//   position: absolute;
-//   top: 50%;
-//   transform: translate(0, -50%);
-//   right: 32px;
-//   z-index: 10;
-//   cursor: pointer;
-//   opacity: 0.8;
-//   padding: 10px;
-//   transform: rotate(180deg);
-// `;
 interface IArrowButtonStyled {
   left?: boolean;
   right?: boolean;
@@ -29,16 +7,19 @@ interface IArrowButtonStyled {
 
 export const ArrowButton = styled.button<IArrowButtonStyled>`
   position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
+  top: calc(50% - 66px/2);
   z-index: 10;
   cursor: pointer;
   opacity: 0.8;
   padding: 10px;
-  ${(props) => props.left && css`
+  transition: all .3s;
+  :hover{
+    opacity: 0.3
+  }
+  ${(props) => props.left && `
     left: 32px;
   `}
-  ${(props) => props.right && css`
+  ${(props) => props.right && `
     right: 32px;
     transform: rotate(180deg);
   `}
