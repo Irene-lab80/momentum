@@ -60,9 +60,6 @@ export default createGlobalStyle`
   };
 
   @media (max-width: 768px) {
-    .time {
-      min-height: 80px;
-      font-size: 72px;    
-    }
+
   }
 }`;
