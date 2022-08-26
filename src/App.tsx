@@ -5,6 +5,9 @@ import Greeting from './components/common/Greeting';
 import ImageSlider from './components/common/Slider';
 import GlobalStyles from './styles/global';
 import QuoteGenerator from './components/common/QuoteGenerator';
+import {
+  Footer, Header, Main, MainScreen, SliderContainer
+} from './styles';
 
 const App = () => {
   const [date, setDate] = useState(new Date());
@@ -27,23 +30,23 @@ const App = () => {
     { url: 'https://images.unsplash.com/photo-1534161308652-fdfcf10f62c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2174&q=80', title: 'slide4' }
   ];
 
-  const containerStyles = {
-    width: '100vw',
-    height: '100vh',
-  };
-
   return (
     <div className="App">
       <GlobalStyles />
-      <main className="main">
-        <Clock date={date} />
-        <CurrentDate date={date} />
-        <Greeting date={date} />
-        <QuoteGenerator />
-      </main>
-      <div style={containerStyles}>
+      <SliderContainer>
         <ImageSlider slides={images} />
-      </div>
+      </SliderContainer>
+      <MainScreen className="main">
+        <Header />
+        <Main>
+          <Clock date={date} />
+          <CurrentDate date={date} />
+          <Greeting date={date} />
+        </Main>
+        <Footer>
+          <QuoteGenerator />
+        </Footer>
+      </MainScreen>
     </div>
   );
 };
