@@ -15,12 +15,17 @@ export const Author = styled.span`
 `;
 
 export const Button = styled.button`
-  display: inline-flex;
+  /* display: inline-flex; */
   text-align: center;
   color: #ffffff;
-  border: 1px solid #ffffff;
-  padding: 10px;
+  border: none;
+  /* padding: 10px; */
   margin-top: 5px;
   background: transparent;
-  border: 1px solid #ffffff;
+  /* border: 1px solid #ffffff; */
+  opacity: 0.8;
+  cursor: pointer;
+  :hover {
+    opacity: 1;
+  }
 `;

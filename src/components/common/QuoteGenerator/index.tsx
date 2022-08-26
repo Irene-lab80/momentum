@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   Container, Quote, Author, Button
 } from './styles';
+import RefreshSVG from '../svg/RefreshSVG';
 
 const QuoteGenerator = () => {
   const [quote, setQuote] = useState(() => {
@@ -39,18 +40,19 @@ const QuoteGenerator = () => {
       console.log(error);
     }
   };
-  // useEffect(() => {
-  //   quoteAPI();
-  // }, []);
+
   return (
     <Container>
+      <Button onClick={quoteAPI}>
+        <RefreshSVG />
+      </Button>
       <Quote>
         {`"${quote}"`}
       </Quote>
       <Author>
         {`— ${author}`}
       </Author>
-      <Button onClick={quoteAPI}>Refresh</Button>
+
     </Container>
   );
 };
