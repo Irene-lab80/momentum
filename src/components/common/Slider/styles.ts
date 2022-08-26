@@ -10,13 +10,13 @@ export const ArrowButton = styled.button<IArrowButtonStyled>`
   top: calc(50% - 66px/2);
   z-index: 10;
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 0.5;
   padding: 10px;
   transition: all .3s;
   background: transparent;
   border: none;
   :hover{
-    opacity: 0.3
+    opacity: 0.8;
   }
   ${(props) => props.left && `
     left: 32px;
