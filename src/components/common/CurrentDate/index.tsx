@@ -1,4 +1,5 @@
 import React from 'react';
+import DateTitle from './styles';
 
 type ClockType = {
   date: Date;
@@ -10,9 +11,9 @@ const CurrentDate = ({ date }: ClockType) => {
     day: 'numeric' | '2-digit' | undefined;
   } = { month: 'long', day: 'numeric' };
 
-  const currentDate = date.toLocaleDateString('ru-RU', options);
+  const currentDateLocale = date.toLocaleDateString('ru-RU', options);
 
-  return <h2 className="date">{currentDate}</h2>;
+  return <DateTitle>{currentDateLocale}</DateTitle>;
 };
 
 export default CurrentDate;

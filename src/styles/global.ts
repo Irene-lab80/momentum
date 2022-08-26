@@ -51,13 +51,6 @@ export default createGlobalStyle`
     z-index: 100;
   }
 
-  .date {
-    min-height: 28px;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #ffffff;
-  }
-
   .bg {
     height: 160px;
     color: #fff;
