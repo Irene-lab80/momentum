@@ -51,15 +51,6 @@ export default createGlobalStyle`
     z-index: 100;
   }
 
-  .time {
-    // min-height: 124px;
-    margin-bottom: 10px;
-    // font-family: 'Arial-MT';
-    font-size: 100px;
-    // letter-spacing: -4px;  
-    color: #ffffff;
-  }
-
   .date {
     min-height: 28px;
     font-size: 24px;
