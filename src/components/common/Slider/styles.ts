@@ -19,14 +19,14 @@ export const ArrowButton = styled.button<IArrowButtonStyled>`
   ${(props) => props.left && `
     left: 32px;
     @media (max-width: 768px){
-      left: 10px;
+      left: 5px;
     }
   `}
   ${(props) => props.right && `
     right: 32px;
     transform: rotate(180deg);
     @media (max-width: 768px){
-      right: 10px;
+      right: 5px;
     }
   `}
 

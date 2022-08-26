@@ -42,7 +42,7 @@ const Greeting = ({ date }: ClockType) => {
   return (
     <Container>
       <PartOfDay>{greetingText}</PartOfDay>
-      <UserName className="name" type="text" placeholder="[Enter name]" value={name} onChange={(e) => setName(e.target.value)} />
+      <UserName type="text" placeholder="[Enter name]" value={name} onChange={(e) => setName(e.target.value)} />
     </Container>
   );
 };

@@ -6,9 +6,7 @@ export default styled.time`
   color: #ffffff;
 
   @media (max-width: 768px) {
-    .time {
-      min-height: 80px;
-      font-size: 72px;    
-    }
+    min-height: 80px;
+    font-size: 72px;    
   }
 `;

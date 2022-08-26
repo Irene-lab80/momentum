@@ -11,7 +11,6 @@ export const Container = styled.div`
   color: #ffffff;
   @media (max-width: 768px){
     min-height: 40px;
-    font-size: 32px;
   }
 `;
 
@@ -21,6 +20,8 @@ export const PartOfDay = styled.span`
   text-align: right;
   @media (max-width: 768px){
     padding: 5px;
+    font-size: 28px;
+
   }
 `;
 
@@ -40,5 +41,7 @@ export const UserName = styled.input`
   }
   @media (max-width: 768px){
     font-size: 32px;
-    padding: 5px;  }
+    padding: 5px;  
+    font-size: 28px;
+  }
 `;

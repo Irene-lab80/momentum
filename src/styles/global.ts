@@ -59,7 +59,9 @@ export default createGlobalStyle`
     background: #364d79;
   };
 
-  @media (max-width: 768px) {
-
+  @media (max-width: 425px) {
+    .main {
+      width: 40vh;
+    }
   }
 }`;
