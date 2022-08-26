@@ -58,40 +58,6 @@ export default createGlobalStyle`
     color: #ffffff;
   }
 
-  .greeting-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: stretch;
-    align-items: center;
-    min-height: 48px;
-    width: 100vw;
-    font-size: 40px;
-    color: #ffffff;
-  }
-
-  .greeting {
-    flex: 1;  
-    padding: 10px;
-    text-align: right;
-  }
-
-  .name {
-    flex: 1;
-    max-width: 50%;
-    padding: 10px;
-    font-size: 40px;
-    text-align: left;
-    color: #fff;
-    background-color: transparent;
-    border: 0;
-    outline: 0;
-  }
-
-  .name::placeholder {
-    color: #fff;
-    opacity: .6;
-  }
-
   .bg {
     height: 160px;
     color: #fff;
@@ -104,20 +70,6 @@ export default createGlobalStyle`
     .time {
       min-height: 80px;
       font-size: 72px;    
-    }
-
-    .greeting-container {
-      min-height: 40px;
-      font-size: 32px;
-    }
-
-    .greeting {
-      padding: 5px;
-    }
-
-    .name {
-      font-size: 32px;
-      padding: 5px;
     }
   }
 }`;

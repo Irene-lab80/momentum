@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Container, PartOfDay, UserName } from './styles';
 
 type ClockType = {
   date: Date;
 }
 
 const Greeting = ({ date }: ClockType) => {
-  // date
-
   const hours = date.getHours();
 
   // time of day
@@ -16,9 +15,9 @@ const Greeting = ({ date }: ClockType) => {
     if (hrs >= 12 && hrs <= 17) return 'afternoon';
     if (hrs >= 17 && hrs <= 24) return 'evening';
   };
-
   const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay(hours));
 
+  // greeting
   const showGreeting = () => {
     setTimeOfDay(timeOfDay);
   };
@@ -31,6 +30,7 @@ const Greeting = ({ date }: ClockType) => {
     };
   }, []);
 
+  // name
   const [name, setName] = useState(() => {
     const saved = localStorage.getItem('name') as string;
     const initialValue = JSON.parse(saved);
@@ -40,10 +40,10 @@ const Greeting = ({ date }: ClockType) => {
   }, [name]);
 
   return (
-    <div className="greeting-container">
-      <span className="greeting">{greetingText}</span>
-      <input className="name" type="text" placeholder="[Enter name]" value={name} onChange={(e) => setName(e.target.value)} />
-    </div>
+    <Container>
+      <PartOfDay>{greetingText}</PartOfDay>
+      <UserName className="name" type="text" placeholder="[Enter name]" value={name} onChange={(e) => setName(e.target.value)} />
+    </Container>
   );
 };
 
