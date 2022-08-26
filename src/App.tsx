@@ -4,6 +4,7 @@ import CurrentDate from './components/common/CurrentDate';
 import Greeting from './components/common/Greeting';
 import ImageSlider from './components/common/Slider';
 import GlobalStyles from './styles/global';
+import QuoteGenerator from './components/common/QuoteGenerator';
 
 const App = () => {
   const [date, setDate] = useState(new Date());
@@ -38,6 +39,7 @@ const App = () => {
         <Clock date={date} />
         <CurrentDate date={date} />
         <Greeting date={date} />
+        <QuoteGenerator />
       </main>
       <div style={containerStyles}>
         <ImageSlider slides={images} />

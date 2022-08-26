@@ -33,12 +33,6 @@ export default createGlobalStyle`
     // transition: background-image 1s ease-in-out;
   }
 
-  button {
-    background: transparent;
-    border: none;
-    border-radius: 50%;
-  }
-
   .main {
     height: 60vh;
     width: 60vh;

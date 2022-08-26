@@ -13,6 +13,8 @@ export const ArrowButton = styled.button<IArrowButtonStyled>`
   opacity: 0.8;
   padding: 10px;
   transition: all .3s;
+  background: transparent;
+  border: none;
   :hover{
     opacity: 0.3
   }
