@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Clock from './components/common/Clock';
 import CurrentDate from './components/common/CurrentDate';
 import Greeting from './components/common/Greeting';
-import ImageSlider from './components/common/Slider/ImageSlider';
+import ImageSlider from './components/common/Slider';
 import GlobalStyles from './styles/global';
 
 const App = () => {

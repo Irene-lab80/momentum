@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Arrow from './Arrow';
+import Arrow from '../svg/Arrow';
 import {
   ArrowButton, Slider, Slide
 } from './styles';
