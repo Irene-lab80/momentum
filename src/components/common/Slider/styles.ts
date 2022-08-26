@@ -18,11 +18,21 @@ export const ArrowButton = styled.button<IArrowButtonStyled>`
   }
   ${(props) => props.left && `
     left: 32px;
+    @media (max-width: 768px){
+      left: 10px;
+    }
   `}
   ${(props) => props.right && `
     right: 32px;
     transform: rotate(180deg);
+    @media (max-width: 768px){
+      right: 10px;
+    }
   `}
+
+  @media (max-width: 768px){
+    padding: 5px;
+  }
 `;
 
 export const Slider = styled.div`
