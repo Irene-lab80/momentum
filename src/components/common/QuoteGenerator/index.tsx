@@ -5,8 +5,23 @@ import {
 } from './styles';
 
 const QuoteGenerator = () => {
-  const [quote, setQuote] = useState('');
-  const [author, setAuthor] = useState('');
+  const [quote, setQuote] = useState(() => {
+    const saved = localStorage.getItem('quote') as string;
+    const initialValue = JSON.parse(saved);
+    return initialValue || 'There is only one success: to be able to spend your life in your own way.';
+  });
+  useEffect(() => {
+    localStorage.setItem('quote', JSON.stringify(quote));
+  }, [quote]);
+
+  const [author, setAuthor] = useState(() => {
+    const saved = localStorage.getItem('author') as string;
+    const initialValue = JSON.parse(saved);
+    return initialValue || 'Christopher Morley';
+  });
+  useEffect(() => {
+    localStorage.setItem('author', JSON.stringify(author));
+  }, [author]);
 
   const quoteAPI = async () => {
     let arrayOfQuotes = [];
@@ -24,9 +39,9 @@ const QuoteGenerator = () => {
       console.log(error);
     }
   };
-  useEffect(() => {
-    quoteAPI();
-  }, []);
+  // useEffect(() => {
+  //   quoteAPI();
+  // }, []);
   return (
     <Container>
       <Quote>
