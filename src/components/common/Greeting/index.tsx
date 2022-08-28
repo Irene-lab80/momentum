@@ -2,33 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Container, PartOfDay, UserName } from './styles';
 
 type ClockType = {
-  date: Date;
+  timeOfDay: string | undefined;
 }
 
-const Greeting = ({ date }: ClockType) => {
-  const hours = date.getHours();
-
-  // time of day
-  // eslint-disable-next-line consistent-return
-  const getTimeOfDay = (hrs: number) => {
-    if (hrs < 12) return 'morning';
-    if (hrs >= 12 && hrs <= 17) return 'afternoon';
-    if (hrs >= 17 && hrs <= 24) return 'evening';
-  };
-  const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay(hours));
-
+const Greeting = ({ timeOfDay }: ClockType) => {
   // greeting
-  const showGreeting = () => {
-    setTimeOfDay(timeOfDay);
-  };
-  const greetingText = `Good ${timeOfDay},`;
 
-  useEffect(() => {
-    const timeOfDayId = setInterval(showGreeting, 1000);
-    return function cleanup() {
-      clearInterval(timeOfDayId);
-    };
-  }, []);
+  const greetingText = `Good ${timeOfDay},`;
 
   // name
   const [name, setName] = useState(() => {

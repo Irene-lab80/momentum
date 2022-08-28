@@ -7,19 +7,21 @@ import {
   ArrowButton, Slider, Slide
 } from './styles';
 
-// type ImageSliderType = {
-//   slides: { url: string; title: string; }[];
-// }
+type ImageSliderType = {
+  // slides: { url: string; title: string; }[];
+  timeOfDay: string | undefined;
+}
 
-const ImageSlider = () => {
+const ImageSlider = ({ timeOfDay }: ImageSliderType) => {
   const [imgArray, setimgArray] = useState<any>();
+  const [isLoading, setIsLoading] = useState(true);
 
   const imgAPI = async () => {
     let arrayOfImages = [];
     try {
-      const data = await axios.get('https://api.unsplash.com/search/photos?page=1&per_page=10&query=nature&orientation=landscape&client_id=3eKMU9-jHoMz-hErq6gHhkhITGFRkq5tE2gYgXSnctA');
+      const data = await axios.get(`https://api.unsplash.com/search/photos?page=1&per_page=10&query=${timeOfDay}&orientation=landscape&client_id=3eKMU9-jHoMz-hErq6gHhkhITGFRkq5tE2gYgXSnctA`);
       arrayOfImages = data.data.results;
-      console.log(arrayOfImages[0].urls.full);
+      console.log(arrayOfImages);
     } catch (error) {
       console.log(error);
     }
@@ -48,6 +50,7 @@ const ImageSlider = () => {
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setcurrentIndex(newIndex);
   };
+
   return (
     <Slider>
       <ArrowButton left type="button" onClick={goToPrev}>

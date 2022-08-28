@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Clock from './components/common/Clock';
 import CurrentDate from './components/common/CurrentDate';
 import Greeting from './components/common/Greeting';
@@ -24,19 +23,40 @@ const App = () => {
     };
   }, []);
 
+  const hours = date.getHours();
+
+  // time of day
+  // eslint-disable-next-line consistent-return
+  const getTimeOfDay = (hrs: number) => {
+    if (hrs < 12) return 'morning';
+    if (hrs >= 12 && hrs <= 17) return 'afternoon';
+    if (hrs >= 17 && hrs <= 24) return 'evening';
+  };
+
+  const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay(hours));
+  const showGreeting = () => {
+    setTimeOfDay(timeOfDay);
+  };
+
+  useEffect(() => {
+    const timeOfDayId = setInterval(showGreeting, 1000);
+    return function cleanup() {
+      clearInterval(timeOfDayId);
+    };
+  }, []);
+
   return (
     <div className="App">
       <GlobalStyles />
       <SliderContainer>
-        {/* <ImageSlider slides={imgArray} /> */}
-        <ImageSlider />
+        <ImageSlider timeOfDay={timeOfDay} />
       </SliderContainer>
       <MainScreen className="main">
         <Header />
         <Main>
           <Clock date={date} />
           <CurrentDate date={date} />
-          <Greeting date={date} />
+          <Greeting timeOfDay={timeOfDay} />
         </Main>
         <Footer>
           <QuoteGenerator />
