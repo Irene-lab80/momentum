@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Loader from '../Loader';
 
 import Arrow from '../svg/Arrow';
 import {
@@ -57,7 +58,7 @@ const ImageSlider = () => {
       </ArrowButton>
       {imgArray
         ? <Slide style={{ backgroundImage: `url(${imgArray[currentIndex].urls.full})` }} />
-        : <h2>loading</h2>}
+        : <Loader />}
     </Slider>
   );
 };
