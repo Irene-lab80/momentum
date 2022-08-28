@@ -49,5 +49,5 @@ export const Slide = styled.div`
   background-size: cover;
   background-color: #bbbbbb;
   background-blend-mode: multiply;
-  transition: all .4s ease-in-out;
+  transition: all .6s ease-in-out;
 `;
