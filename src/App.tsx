@@ -28,7 +28,8 @@ const App = () => {
   // time of day
   // eslint-disable-next-line consistent-return
   const getTimeOfDay = (hrs: number) => {
-    if (hrs < 12) return 'morning';
+    if (hrs < 6) return 'night';
+    if (hrs >= 6 && hrs < 12) return 'morning';
     if (hrs >= 12 && hrs <= 17) return 'afternoon';
     if (hrs >= 17 && hrs <= 24) return 'evening';
   };
