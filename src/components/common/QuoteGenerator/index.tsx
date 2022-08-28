@@ -9,7 +9,7 @@ const QuoteGenerator = () => {
   const [quote, setQuote] = useState(() => {
     const saved = localStorage.getItem('quote') as string;
     const initialValue = JSON.parse(saved);
-    return initialValue || 'There is only one success: to be able to spend your life in your own way.';
+    return initialValue || '"Technology is teaching us to be human again."';
   });
   useEffect(() => {
     localStorage.setItem('quote', JSON.stringify(quote));
@@ -18,7 +18,7 @@ const QuoteGenerator = () => {
   const [author, setAuthor] = useState(() => {
     const saved = localStorage.getItem('author') as string;
     const initialValue = JSON.parse(saved);
-    return initialValue || 'Christopher Morley';
+    return initialValue || 'Simon Mainwaring';
   });
   useEffect(() => {
     localStorage.setItem('author', JSON.stringify(author));

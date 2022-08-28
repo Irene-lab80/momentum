@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Clock from './components/common/Clock';
 import CurrentDate from './components/common/CurrentDate';
 import Greeting from './components/common/Greeting';
@@ -23,18 +24,12 @@ const App = () => {
     };
   }, []);
 
-  const images = [
-    { url: 'https://images.unsplash.com/photo-1449034446853-66c86144b0ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80', title: 'slide1' },
-    { url: 'https://images.unsplash.com/photo-1470341223622-1019832be824?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2288&q=80', title: 'slide2' },
-    { url: 'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2094&q=80', title: 'slide3' },
-    { url: 'https://images.unsplash.com/photo-1534161308652-fdfcf10f62c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2174&q=80', title: 'slide4' }
-  ];
-
   return (
     <div className="App">
       <GlobalStyles />
       <SliderContainer>
-        <ImageSlider slides={images} />
+        {/* <ImageSlider slides={imgArray} /> */}
+        <ImageSlider />
       </SliderContainer>
       <MainScreen className="main">
         <Header />
@@ -46,6 +41,7 @@ const App = () => {
         <Footer>
           <QuoteGenerator />
         </Footer>
+        {/* <button type="button" onClick={imgAPI}>CLICK ME</button> */}
       </MainScreen>
     </div>
   );
