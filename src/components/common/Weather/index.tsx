@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import DisplayWeather from './DisplayWeather';
 
@@ -10,15 +11,21 @@ const Weather = () => {
   });
 
   const [weather, setWeather] = useState({});
-
-  async function weatherData(e: any) {
+  const [message, setMessage] = useState('');
+  const weatherData = async (e: any) => {
     e.preventDefault();
+    let data = {};
+    try {
+      const result = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${form.city}&lang=ru&appid=${APIKEY}&units=metric`);
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${form.city}&lang=ru&appid=${APIKEY}&units=metric`;
-    const res = await fetch(url);
-    const data = await res.json();
-    setWeather({ data });
-  }
+      data = result.data;
+      setWeather({ data });
+      // console.log(data);
+    } catch (error) {
+      setMessage('nothing found');
+      console.log(error);
+    }
+  };
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -33,7 +40,7 @@ const Weather = () => {
         <Input type="text" name="city" placeholder="City" onChange={(e) => handleChange(e)} />
       </form>
       {/* @ts-ignore */}
-      {weather.data ? <DisplayWeather data={weather} /> : null}
+      {weather.data ? <DisplayWeather data={weather} /> : message}
     </Container>
   );
 };
