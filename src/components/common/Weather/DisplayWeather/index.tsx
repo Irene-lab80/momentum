@@ -10,7 +10,7 @@ const DisplayWeather = ({ data }: any) => (
       ? (
         <>
           <Row>
-            {/* <WeatherIcon src={`http://openweathermap.org/img/wn/${data.data.weather[0].icon}.png`} alt="weather icon" /> */}
+            <WeatherIcon src={`http://openweathermap.org/img/wn/${data.data.weather[0].icon}.png`} alt="weather icon" />
             <Temperature>
               {`${Math.floor(data.data.main.temp)} °C`}
             </Temperature>
