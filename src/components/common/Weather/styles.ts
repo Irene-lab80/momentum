@@ -21,3 +21,7 @@ export const Input = styled.input`
   letter-spacing: 2px;
 }
 `;
+
+export const Message = styled.div`
+  padding: 5px 0;
+`;
