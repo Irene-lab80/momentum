@@ -9,6 +9,7 @@ import {
   Footer, Header, Main, MainScreen, SliderContainer
 } from './styles';
 import Weather from './components/common/Weather';
+import Player from './components/common/Player';
 
 const App = () => {
   const [date, setDate] = useState(new Date());
@@ -55,6 +56,9 @@ const App = () => {
       </SliderContainer>
       <MainScreen className="main">
         <Header>
+
+          <Player />
+
           <Weather />
         </Header>
         <Main>

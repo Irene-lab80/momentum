@@ -19,6 +19,9 @@ export const SliderContainer = styled.div`
 export const Header = styled.header`
   height: 30vh;
   margin: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const Main = styled.main`
