@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import {
-  Container, Quote, Author, Button
-} from './styles';
+import React from 'react';
+import { Container } from './styles';
 
-const Player = () => {
-  const g = 5;
-  return (
-    <Container>
-      Player
-    </Container>
-  );
-};
+const Player = () => (
+  <Container>
+    Player
+  </Container>
+);
 
 export default Player;
