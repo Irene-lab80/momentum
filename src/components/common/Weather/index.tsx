@@ -24,17 +24,14 @@ const Weather = () => {
     const initialValue = JSON.parse(saved);
     return initialValue || null;
   });
-  useEffect(() => {
-    localStorage.setItem('weatherData', JSON.stringify(weatherData));
-  }, [weatherData]);
 
   // get data from api
-  const getWeatherData = async (e: any) => {
-    e.preventDefault();
+  const getWeatherData = async () => {
     let data = {};
     try {
       const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=ru&appid=${APIKEY}&units=metric`);
       data = response.data;
+      console.log(data);
       setWeatherData({ data });
     } catch (error) {
       setWeatherData(null);
@@ -43,6 +40,20 @@ const Weather = () => {
       // console.log(error);
     }
   };
+
+  const weatherHandler = (e: any) => {
+    e.preventDefault();
+    getWeatherData();
+  };
+
+  useEffect(() => {
+    localStorage.setItem('weatherData', JSON.stringify(weatherData));
+    // getWeatherData();
+  }, [weatherData]);
+
+  useEffect(() => {
+    getWeatherData();
+  }, []);
 
   // handle input
   const handleChange = (e: any) => {
@@ -54,7 +65,7 @@ const Weather = () => {
 
   return (
     <Container>
-      <form onSubmit={getWeatherData}>
+      <form onSubmit={weatherHandler}>
         <Input type="text" name="city" value={city} placeholder="City" onChange={(e) => handleChange(e)} />
       </form>
       {weatherData !== null && city !== '' ? <DisplayWeather data={weatherData} /> : <Message>{errorText}</Message>}
