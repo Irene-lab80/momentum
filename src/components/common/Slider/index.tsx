@@ -34,7 +34,7 @@ const ImageSlider = ({ timeOfDay }: ImageSliderType) => {
   };
   useEffect(() => {
     imgAPI();
-  }, []);
+  }, [timeOfDay]);
 
   // slides number
   const [currentIndex, setcurrentIndex] = useState(0);
