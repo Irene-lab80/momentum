@@ -6,14 +6,13 @@ type ClockType = {
 }
 
 const CurrentDate = ({ date }: ClockType) => {
-  const options: {
-    month: 'long' | 'numeric' | '2-digit' | 'short' | 'narrow' | undefined;
-    day: 'numeric' | '2-digit' | undefined;
-  } = { month: 'long', day: 'numeric' };
-
-  const currentDateLocale = date.toLocaleDateString('ru-RU', options);
-
-  return <DateTitle>{currentDateLocale}</DateTitle>;
+  const currentDateLocale = date.toLocaleDateString('en-En', { month: 'long', day: 'numeric' });
+  const day = date.toLocaleDateString('en-En', { weekday: 'long' });
+  return (
+    <DateTitle>
+      <span>{`${day}, ${currentDateLocale}.`}</span>
+    </DateTitle>
+  );
 };
 
 export default CurrentDate;
