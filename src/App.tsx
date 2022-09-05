@@ -12,6 +12,7 @@ import Weather from './components/common/Weather';
 import Player from './components/common/Player';
 
 const App = () => {
+  // DATE
   const [date, setDate] = useState(new Date());
 
   function refreshClock() {
@@ -25,28 +26,27 @@ const App = () => {
     };
   }, []);
 
-  const hours = date.getHours();
-
   // time of day
-  // eslint-disable-next-line consistent-return
-  const getTimeOfDay = (hrs: number) => {
+  const getTimeOfDay = (hrs: number): 'night' | 'morning' | 'afternoon' | 'evening' | undefined | 'error' => {
     if (hrs < 6) return 'night';
     if (hrs >= 6 && hrs < 12) return 'morning';
-    if (hrs >= 12 && hrs <= 17) return 'afternoon';
-    if (hrs >= 17 && hrs <= 24) return 'evening';
+    if (hrs >= 12 && hrs < 17) return 'afternoon';
+    if (hrs >= 17 && hrs <= 23) return 'evening';
+    return 'error';
   };
 
-  const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay(hours));
-  const showGreeting = () => {
-    setTimeOfDay(timeOfDay);
-  };
+  const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay(date.getHours()));
+
+  function refreshTimeOfDay() {
+    setTimeOfDay(getTimeOfDay(date.getHours()));
+  }
 
   useEffect(() => {
-    const timeOfDayId = setInterval(showGreeting, 1000);
+    const timerId = setInterval(refreshTimeOfDay, 1000);
     return function cleanup() {
-      clearInterval(timeOfDayId);
+      clearInterval(timerId);
     };
-  }, []);
+  }, [date]);
 
   return (
     <div className="App">
@@ -56,9 +56,7 @@ const App = () => {
       </SliderContainer>
       <MainScreen className="main">
         <Header>
-
           <Player />
-
           <Weather />
         </Header>
         <Main>
@@ -69,7 +67,6 @@ const App = () => {
         <Footer>
           <QuoteGenerator />
         </Footer>
-        {/* <button type="button" onClick={imgAPI}>CLICK ME</button> */}
       </MainScreen>
     </div>
   );

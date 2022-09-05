@@ -8,20 +8,22 @@ type ClockType = {
 const Greeting = ({ timeOfDay }: ClockType) => {
   // greeting
 
-  const greetingText = `Good ${timeOfDay},`;
-
   // name
   const [name, setName] = useState(() => {
     const saved = localStorage.getItem('name') as string;
     const initialValue = JSON.parse(saved);
     return initialValue || '';
-  }); useEffect(() => {
+  });
+
+  useEffect(() => {
     localStorage.setItem('name', JSON.stringify(name));
   }, [name]);
 
   return (
     <Container>
-      <PartOfDay>{greetingText}</PartOfDay>
+      <PartOfDay>
+        {`Good ${timeOfDay}, `}
+      </PartOfDay>
       <UserName type="text" placeholder="[Enter name]" value={name} onChange={(e) => setName(e.target.value)} />
     </Container>
   );
