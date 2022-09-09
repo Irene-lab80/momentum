@@ -17,7 +17,7 @@ const DisplayWeather = ({ data }: any) => (
           </Row>
           <Description>{data.data.weather[0].description}</Description>
           <Wind>
-            {`${Math.floor(data.data.wind.speed)} м/с`}
+            {`${Math.floor(data.data.wind.speed)} m/s`}
           </Wind>
         </>
       )
