@@ -2,12 +2,14 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import GlobalStyles from './styles/global';
 import MainPage from './components/Pages/MainPage';
+import WeatherPage from './components/Pages/WeatherPage';
 
 const App = () => (
   <div className="App">
     <GlobalStyles />
     <Routes>
       <Route path="/" element={<MainPage />} />
+      <Route path="weather" element={<WeatherPage />} />
       <Route path="*" element={<div>not found 404</div>} />
     </Routes>
   </div>
