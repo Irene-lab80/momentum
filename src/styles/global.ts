@@ -114,4 +114,14 @@ export default createGlobalStyle`
   }
 }
 
+.hidden {
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.visible {
+  opacity: 1;
+  transition: 0.3s;
+}
+
 `;

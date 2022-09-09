@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import NewTabSVG from '../svg/NewTabSVG';
 import DisplayWeather from './DisplayWeather';
 
 import { Container, Input, Message } from './styles';
@@ -7,7 +9,7 @@ import { Container, Input, Message } from './styles';
 const Weather = () => {
   const APIKEY = '31d9b62edfb8c214c2eabeef6f13b51c';
   const [errorText, setErrorText] = useState('');
-
+  const [display, setDisplay] = useState('hidden');
   // set query
   const [city, setCity] = useState(() => {
     const saved = localStorage.getItem('city') as string;
@@ -64,7 +66,14 @@ const Weather = () => {
   };
 
   return (
-    <Container>
+    <Container
+      onMouseEnter={() => setDisplay('visible')}
+      onMouseLeave={() => setDisplay('hidden')}>
+
+      <Link className={display} to="weather" target="_blank" rel="noopener noreferrer">
+        <NewTabSVG />
+      </Link>
+
       <form onSubmit={weatherHandler}>
         <Input type="text" name="city" value={city} placeholder="City" onChange={(e) => handleChange(e)} />
       </form>

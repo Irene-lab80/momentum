@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   /* border: 1px solid white; */
   padding: 10px;
+  text-align: right;
 `;
 
 export const Input = styled.input`
@@ -10,7 +11,7 @@ export const Input = styled.input`
   text-align: right;
   background: transparent;
   color: white;
-  padding: 5px;
+  padding-bottom: 5px;
   letter-spacing: 2px;
   border: none;
   border-bottom: 1px solid white ;
