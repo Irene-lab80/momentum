@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import AudioControls from './AudioControls';
 import ButtonsAndVolumeBox from './ButtonsAndVolumeBox';
-import ButtonsBox from './ButtonsBox';
-import Next from './Next';
+
 import PageContainer from './PlayerContainer';
-import Pause from './Pause';
-import Play from './Play';
+
 import PlayerTemplate from './PlayerTemplate';
-import Previous from './Previous';
 import Progress from './Progress';
 import Time from './Time';
 import Title from './Title';
@@ -24,30 +22,39 @@ const Player = ({ trackList }: any) => {
   const [slider, setSlider] = useState(1);
   const [drag, setDrag] = useState(0);
   const [volume, setVolume] = useState(0.8);
-
-  const playlist = [] as any[];
   const [curTrack, setCurTrack] = useState(0);
-
-  useEffect(() => {
-    setAudio(new Audio(trackList[curTrack].url));
-    setTitle(trackList[curTrack].title);
-  }, []);
 
   const play = () => {
     setIsPlaying(true);
     audio.play();
   };
 
+  const pause = () => {
+    setIsPlaying(false);
+    audio.pause();
+  };
+
+  useEffect(() => {
+    if (audio) {
+      setLength(audio.duration);
+      setTime(audio.currentTime);
+    }
+  }, [audio?.duration]);
+
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    setAudio(new Audio(trackList[curTrack].url));
+    setTitle(trackList[curTrack].title);
+    if (audio) {
+      return pause();
+    }
+  }, [curTrack]);
+
   useEffect(() => {
     if (audio != null) {
       audio.volume = volume;
     }
   }, [volume]);
-
-  const pause = () => {
-    setIsPlaying(false);
-    audio.pause();
-  };
 
   useEffect(() => {
     if (audio != null) {
@@ -57,27 +64,19 @@ const Player = ({ trackList }: any) => {
     }
   }, [drag]);
 
-  useEffect(() => {
-    if (!playlist.includes(curTrack)) {
-      setCurTrack(playlist[0]);
-    }
-  }, []);
-
   const previous = () => {
-    const index = playlist.indexOf(curTrack);
-    if (index !== 0) {
-      setCurTrack(playlist[index - 1]);
+    if (curTrack - 1 < 0) {
+      setCurTrack(trackList.length - 1);
     } else {
-      setCurTrack(playlist[playlist.length - 1]);
+      setCurTrack(curTrack - 1);
     }
   };
 
   const next = () => {
-    const index = playlist.indexOf(curTrack);
-    if (index !== playlist.length - 1) {
-      setCurTrack(playlist[index + 1]);
+    if (curTrack < trackList.length - 1) {
+      setCurTrack(curTrack + 1);
     } else {
-      setCurTrack(playlist[0]);
+      setCurTrack(0);
     }
   };
 
@@ -102,15 +101,7 @@ const Player = ({ trackList }: any) => {
           onTouchEnd={play}
         />
         <ButtonsAndVolumeBox>
-          <ButtonsBox>
-            <Previous onClick={previous} />
-            {isPlaying ? (
-              <Pause onClick={pause} />
-            ) : (
-              <Play onClick={play} />
-            )}
-            <Next onClick={next} />
-          </ButtonsBox>
+          <AudioControls isPlaying={isPlaying} play={play} pause={pause} previous={previous} next={next} />
           <Volume
             value={volume}
             onChange={(e: any) => {

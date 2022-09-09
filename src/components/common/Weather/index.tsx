@@ -29,7 +29,7 @@ const Weather = () => {
   const getWeatherData = async () => {
     let data = {};
     try {
-      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=ru&appid=${APIKEY}&units=metric`);
+      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=${'en'}&appid=${APIKEY}&units=metric`);
       data = response.data;
       console.log(data);
       setWeatherData({ data });

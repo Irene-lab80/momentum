@@ -11,7 +11,7 @@ const CurrentDate = ({ date }: ClockType) => {
     day: 'numeric' | '2-digit' | undefined;
   } = { month: 'long', day: 'numeric' };
 
-  const currentDateLocale = date.toLocaleDateString('ru-RU', options);
+  const currentDateLocale = date.toLocaleDateString('en-EN', options);
 
   return <DateTitle>{currentDateLocale}</DateTitle>;
 };
