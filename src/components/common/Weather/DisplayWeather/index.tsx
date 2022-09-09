@@ -6,7 +6,7 @@ import {
 
 const DisplayWeather = ({ data }: any) => (
   <Container>
-    {data !== {}
+    {data
       ? (
         <>
           <Row>
