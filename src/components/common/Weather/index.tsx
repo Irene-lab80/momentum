@@ -5,6 +5,7 @@ import NewTabSVG from '../svg/NewTabSVG';
 import DisplayWeather from './DisplayWeather';
 
 import { Container, Input, Message } from './styles';
+import WeatherInput from './WeatherInput';
 
 const Weather = () => {
   const APIKEY = '31d9b62edfb8c214c2eabeef6f13b51c';
@@ -69,14 +70,10 @@ const Weather = () => {
     <Container
       onMouseEnter={() => setDisplay('visible')}
       onMouseLeave={() => setDisplay('hidden')}>
-
       <Link className={display} to="weather" target="_blank" rel="noopener noreferrer">
         <NewTabSVG />
       </Link>
-
-      <form onSubmit={weatherHandler}>
-        <Input type="text" name="city" value={city} placeholder="City" onChange={(e) => handleChange(e)} />
-      </form>
+      <WeatherInput weatherHandler={weatherHandler} city={city} handleChange={(e: any) => handleChange(e)} />
       {weatherData !== null && city !== '' ? <DisplayWeather data={weatherData} /> : <Message>{errorText}</Message>}
     </Container>
   );
