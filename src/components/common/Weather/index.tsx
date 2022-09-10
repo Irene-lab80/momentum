@@ -1,22 +1,24 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NewTabSVG from '../svg/NewTabSVG';
 import DisplayWeather from './DisplayWeather';
 
-import { Container, Input, Message } from './styles';
+import { Container, Message } from './styles';
 import WeatherInput from './WeatherInput';
 
 const Weather = () => {
   const APIKEY = '31d9b62edfb8c214c2eabeef6f13b51c';
   const [errorText, setErrorText] = useState('');
   const [display, setDisplay] = useState('hidden');
+
   // set query
   const [city, setCity] = useState(() => {
     const saved = localStorage.getItem('city') as string;
     const initialValue = JSON.parse(saved);
     return initialValue || '';
   });
+
   useEffect(() => {
     localStorage.setItem('city', JSON.stringify(city));
   }, [city]);
@@ -40,7 +42,6 @@ const Weather = () => {
       setWeatherData(null);
       setErrorText('Nothing found');
       throw new Error('error');
-      // console.log(error);
     }
   };
 
@@ -51,14 +52,16 @@ const Weather = () => {
 
   useEffect(() => {
     localStorage.setItem('weatherData', JSON.stringify(weatherData));
-    // getWeatherData();
   }, [weatherData]);
 
+  // get weather every hour
   useEffect(() => {
-    getWeatherData();
+    const timerId = setInterval(getWeatherData, 1000 * 60 * 60);
+    return function cleanup() {
+      clearInterval(timerId);
+    };
   }, []);
 
-  // handle input
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     if (name === 'city') {

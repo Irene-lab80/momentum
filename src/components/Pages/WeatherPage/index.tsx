@@ -49,11 +49,14 @@ const WeatherPage = () => {
 
   useEffect(() => {
     localStorage.setItem('weatherData', JSON.stringify(weatherData));
-    // getWeatherData();
   }, [weatherData]);
 
+  // get weather every hour
   useEffect(() => {
-    getWeatherData();
+    const timerId = setInterval(getWeatherData, 1000 * 60 * 60);
+    return function cleanup() {
+      clearInterval(timerId);
+    };
   }, []);
 
   // handle input
@@ -63,6 +66,7 @@ const WeatherPage = () => {
       setCity(value);
     }
   };
+
   return (
     <Container>
       <WeatherInput weatherHandler={weatherHandler} city={city} handleChange={(e: any) => handleChange(e)} />
