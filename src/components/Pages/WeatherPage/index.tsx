@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Arrow from '../../common/svg/Arrow';
+import ImageSlider from '../../common/Slider';
+import SliderContainerComponent from '../../common/SliderContainerComponent';
 import ArrowBackSVG from '../../common/svg/ArrowBackSVG';
 import Weather from '../../common/Weather';
 import DisplayHourlyWeather from '../../common/Weather/DisplayHourlyWeather';
-import WeatherInput from '../../common/Weather/WeatherInput';
-import { Container } from './styles';
+import { Screen } from './styles';
 
 const WeatherPage = () => {
   const APIKEY = '31d9b62edfb8c214c2eabeef6f13b51c';
@@ -53,13 +53,16 @@ const WeatherPage = () => {
   }, []);
 
   return (
-    <Container>
-      <Link to="/">
-        <ArrowBackSVG />
-      </Link>
-      <DisplayHourlyWeather data={weatherData} />
-      <Weather />
-    </Container>
+    <>
+      <SliderContainerComponent />
+      <Screen>
+        <Link to="/">
+          <ArrowBackSVG />
+        </Link>
+        <DisplayHourlyWeather data={weatherData} />
+        <Weather />
+      </Screen>
+    </>
   );
 };
 

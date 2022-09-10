@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Footer, Header, Main, MainScreen, SliderContainer
+  Footer, Header, Main, MainScreen
 } from '../../../styles';
 import Clock from '../../common/Clock';
 import CurrentDate from '../../common/CurrentDate';
 import Greeting from '../../common/Greeting';
 import Player from '../../common/Player';
 import QuoteGenerator from '../../common/QuoteGenerator';
-import ImageSlider from '../../common/Slider';
+import SliderContainerComponent from '../../common/SliderContainerComponent';
 import Weather from '../../common/Weather';
 
 const tracks = [
@@ -66,9 +66,7 @@ const MainPage = () => {
   }, [date]);
   return (
     <>
-      <SliderContainer>
-        <ImageSlider timeOfDay={timeOfDay} />
-      </SliderContainer>
+      <SliderContainerComponent />
       <MainScreen className="main">
         <Header>
           <Player trackList={tracks} />
