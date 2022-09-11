@@ -23,6 +23,7 @@ const Player = ({ trackList }: any) => {
   const [drag, setDrag] = useState(0);
   const [volume, setVolume] = useState(0.8);
   const [curTrack, setCurTrack] = useState(0);
+  const [isEnded, setIsEnded] = useState(false);
 
   const play = () => {
     setIsPlaying(true);
@@ -40,6 +41,14 @@ const Player = ({ trackList }: any) => {
       setTime(audio.currentTime);
       // @ts-ignore
       setSlider(audio.currentTime ? ((audio.currentTime * 100) / audio.duration).toFixed(1) : 0);
+      if (audio?.currentTime === audio?.duration) {
+        setIsEnded(true);
+        if (curTrack < trackList.length - 1) {
+          setCurTrack(curTrack + 1);
+        } else {
+          setCurTrack(0);
+        }
+      }
     }
   }, [audio?.duration, audio?.currentTime]);
 
@@ -65,12 +74,6 @@ const Player = ({ trackList }: any) => {
       audio.currentTime = val;
     }
   }, [drag]);
-
-  // const setAudioTime = () => {
-  //   const curTime = audio.currentTime;
-  //   setTime(curTime);
-  //   setSlider(curTime ? ((curTime * 100) / audio.duration).toFixed(1) : 0);
-  // };
 
   const previous = () => {
     if (curTrack - 1 < 0) {
