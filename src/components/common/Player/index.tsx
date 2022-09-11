@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AudioControls from './AudioControls';
 import ButtonsAndVolumeBox from './ButtonsAndVolumeBox';
 
@@ -38,8 +38,10 @@ const Player = ({ trackList }: any) => {
     if (audio) {
       setLength(audio.duration);
       setTime(audio.currentTime);
+      // @ts-ignore
+      setSlider(audio.currentTime ? ((audio.currentTime * 100) / audio.duration).toFixed(1) : 0);
     }
-  }, [audio?.duration]);
+  }, [audio?.duration, audio?.currentTime]);
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
@@ -63,6 +65,12 @@ const Player = ({ trackList }: any) => {
       audio.currentTime = val;
     }
   }, [drag]);
+
+  // const setAudioTime = () => {
+  //   const curTime = audio.currentTime;
+  //   setTime(curTime);
+  //   setSlider(curTime ? ((curTime * 100) / audio.duration).toFixed(1) : 0);
+  // };
 
   const previous = () => {
     if (curTrack - 1 < 0) {
