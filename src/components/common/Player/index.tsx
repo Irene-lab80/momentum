@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AudioControls from './AudioControls';
 import ButtonsAndVolumeBox from './ButtonsAndVolumeBox';
-
 import PageContainer from './PlayerContainer';
-
 import PlayerTemplate from './PlayerTemplate';
 import Progress from './Progress';
 import Time from './Time';
@@ -13,7 +11,11 @@ import Volume from './Volume';
 
 const fmtMSS = (s: any) => new Date(1000 * s).toISOString().substr(15, 4);
 
-const Player = ({ trackList }: any) => {
+type playerType = {
+  trackList: { url: string; title: string; }[];
+}
+
+const Player = ({ trackList }: playerType) => {
   const [audio, setAudio] = useState(null) as any;
   const [isPlaying, setIsPlaying] = useState(false);
   const [title, setTitle] = useState('');
@@ -23,7 +25,6 @@ const Player = ({ trackList }: any) => {
   const [drag, setDrag] = useState(0);
   const [volume, setVolume] = useState(0.8);
   const [curTrack, setCurTrack] = useState(0);
-  const [isEnded, setIsEnded] = useState(false);
 
   const play = () => {
     setIsPlaying(true);
@@ -42,7 +43,6 @@ const Player = ({ trackList }: any) => {
       // @ts-ignore
       setSlider(audio.currentTime ? ((audio.currentTime * 100) / audio.duration).toFixed(1) : 0);
       if (audio?.currentTime === audio?.duration) {
-        setIsEnded(true);
         if (curTrack < trackList.length - 1) {
           setCurTrack(curTrack + 1);
         } else {

@@ -2,10 +2,10 @@ import React from 'react';
 import { Container, Slider } from './styles';
 
 type ProgressType ={
-  value: any;
-  onChange: any;
-  onMouseUp: any;
-  onTouchEnd: any;
+  value: number;
+  onChange: (e: any) => void;
+  onMouseUp: () => void;
+  onTouchEnd: () => void;
 }
 
 const Progress = ({
