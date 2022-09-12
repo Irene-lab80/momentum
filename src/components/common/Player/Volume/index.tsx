@@ -3,7 +3,7 @@ import { Wrapper, Slider } from './styles';
 
 type VolumeType = {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  value: any;
+  value: number;
 }
 
 const Volume = ({ onChange, value }: VolumeType) => (
