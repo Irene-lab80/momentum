@@ -1,4 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import {
+  selectTime, selectTimeOfDay, timeChange, timeOfDayChange
+} from '../../../store/timeSlice';
 import {
   Footer, Header, Main, MainScreen
 } from '../../../styles';
@@ -31,17 +36,18 @@ const tracks = [
 
 const MainPage = () => {
   // DATE
-  const [date, setDate] = useState(new Date());
-  function refreshClock() {
-    setDate(new Date());
-  }
+  const time = useSelector(selectTime);
+  const timeOfDay = useSelector(selectTimeOfDay);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const timerId = setInterval(refreshClock, 1000);
+    const timerId = setInterval(() => {
+      dispatch(timeChange(new Date().toString()));
+    }, 1000);
     return function cleanup() {
       clearInterval(timerId);
     };
-  }, []);
+  }, [dispatch]);
 
   // time of day
   const getTimeOfDay = (hrs: number): 'night' | 'morning' | 'afternoon' | 'evening' | undefined | 'error' => {
@@ -52,18 +58,13 @@ const MainPage = () => {
     return 'error';
   };
 
-  const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay(date.getHours()));
-
-  function refreshTimeOfDay() {
-    setTimeOfDay(getTimeOfDay(date.getHours()));
-  }
-
   useEffect(() => {
-    const timerId = setInterval(refreshTimeOfDay, 1000);
+    const timerId = setInterval(() => dispatch(timeOfDayChange(getTimeOfDay(new Date(time).getHours()))), 1000);
     return function cleanup() {
       clearInterval(timerId);
     };
-  }, [date]);
+  }, [dispatch]);
+
   return (
     <>
       <SliderContainerComponent />
@@ -73,8 +74,8 @@ const MainPage = () => {
           <Weather />
         </Header>
         <Main>
-          <Clock date={date} />
-          <CurrentDate date={date} />
+          <Clock date={time} />
+          <CurrentDate date={time} />
           <Greeting timeOfDay={timeOfDay} />
         </Main>
         <Footer>
