@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Container, Slider } from './styles';
 
 type ProgressType ={
   value: number;
-  onChange: (e: any) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onMouseUp: () => void;
   onTouchEnd: () => void;
 }

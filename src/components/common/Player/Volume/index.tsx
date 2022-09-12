@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Wrapper, Slider } from './styles';
 
 type VolumeType = {
-  onChange: any;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   value: any;
 }
 

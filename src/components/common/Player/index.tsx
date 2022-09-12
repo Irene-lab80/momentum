@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ChangeEvent } from 'react';
 import AudioControls from './AudioControls';
 import ButtonsAndVolumeBox from './ButtonsAndVolumeBox';
 import PageContainer from './PlayerContainer';
@@ -104,9 +104,9 @@ const Player = ({ trackList }: playerType) => {
         </TitleAndTimeContainer>
         <Progress
           value={slider}
-          onChange={(e: any) => {
-            setSlider(e.target.value);
-            setDrag(e.target.value);
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            setSlider(Number(e.target.value));
+            setDrag(Number(e.target.value));
           }}
           onMouseUp={play}
           onTouchEnd={play}
@@ -115,8 +115,8 @@ const Player = ({ trackList }: playerType) => {
           <AudioControls isPlaying={isPlaying} play={play} pause={pause} previous={previous} next={next} />
           <Volume
             value={volume}
-            onChange={(e: any) => {
-              setVolume(e.target.value / 100);
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              setVolume(Number(e.target.value) / 100);
             }}
           />
         </ButtonsAndVolumeBox>
