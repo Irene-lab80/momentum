@@ -12,3 +12,12 @@ export const Container = styled.div`
 export const Text = styled.h2`
   font-size: 48px;
 `;
+
+export const ArrowContainer = styled.div`
+  height: fit-content;
+  transition: 0.3s;
+  opacity: 0.5;
+  :hover {
+    opacity: 0.8;
+  }
+`;

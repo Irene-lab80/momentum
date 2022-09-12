@@ -1,11 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SliderContainer from '../../common/SliderContainer';
-import { Container, Text } from './styles';
+import ArrowBackSVG from '../../common/svg/ArrowBackSVG';
+import { ArrowContainer, Container, Text } from './styles';
 
 const NotFoundPage = () => (
   <>
     <SliderContainer />
     <Container>
+      <ArrowContainer>
+        <Link to="/">
+          <ArrowBackSVG />
+        </Link>
+      </ArrowContainer>
       <Text>Nothing is here</Text>
     </Container>
   </>

@@ -7,7 +7,7 @@ import {
 const DisplayHourlyWeather = ({ data }: any) => (
   <Container>
     {data ? data.data.list.map((el: any) => (
-      <Item key={el.dt} style={{ background: '#00000016', padding: '5px' }}>
+      <Item key={el.dt}>
         <div>{new Date(el.dt * 1000).toLocaleDateString('en-En', { weekday: 'short' })}</div>
         <div>{new Date(el.dt * 1000).toLocaleDateString('en-En', { day: 'numeric' })}</div>
         <div>{new Date(el.dt * 1000).toLocaleDateString('en-En', { hour: 'numeric' }).split(',').pop()}</div>

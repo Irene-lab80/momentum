@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import SliderContainerComponent from '../../common/SliderContainer';
+import SliderContainer from '../../common/SliderContainer';
 import ArrowBackSVG from '../../common/svg/ArrowBackSVG';
 import Weather from '../../common/Weather';
 import DisplayHourlyWeather from '../../common/Weather/DisplayHourlyWeather';
-import { Screen } from './styles';
+import { Screen, ArrowContainer } from './styles';
 
 const WeatherPage = () => {
   const APIKEY = '31d9b62edfb8c214c2eabeef6f13b51c';
@@ -46,18 +46,20 @@ const WeatherPage = () => {
     localStorage.setItem('hourlyWeatherData', JSON.stringify(weatherData));
   }, [weatherData]);
 
-  // get weather every hour
+  // get weather
   useEffect(() => {
     getWeatherData();
   }, []);
 
   return (
     <>
-      <SliderContainerComponent />
+      <SliderContainer />
       <Screen>
-        <Link to="/">
-          <ArrowBackSVG />
-        </Link>
+        <ArrowContainer>
+          <Link to="/">
+            <ArrowBackSVG />
+          </Link>
+        </ArrowContainer>
         <DisplayHourlyWeather data={weatherData} />
         <Weather />
       </Screen>
