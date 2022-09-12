@@ -8,9 +8,16 @@ type DisplayHourlyWeatherType ={
   data: {data: {list: []}}
 }
 
+type ListElementType = {
+  weather: [{icon: string}],
+  dt: number,
+  wind: {speed: number},
+  main: {temp: number, humidity: number}
+}
+
 const DisplayHourlyWeather = ({ data } : DisplayHourlyWeatherType) => (
   <Container>
-    {data ? data.data.list.map((el: any) => (
+    {data ? data.data.list.map((el: ListElementType) => (
       <Item key={el.dt}>
         <div>{new Date(el.dt * 1000).toLocaleDateString('en-En', { weekday: 'short' })}</div>
         <div>{new Date(el.dt * 1000).toLocaleDateString('en-En', { day: 'numeric' })}</div>
