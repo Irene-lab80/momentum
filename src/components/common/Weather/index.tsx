@@ -54,7 +54,7 @@ const Weather = () => {
     localStorage.setItem('weatherData', JSON.stringify(weatherData));
   }, [weatherData]);
 
-  // get weather every hour
+  // get weather
   useEffect(() => {
     const timerId = setInterval(getWeatherData, 1000 * 60 * 60);
     return function cleanup() {
