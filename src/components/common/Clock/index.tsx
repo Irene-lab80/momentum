@@ -3,11 +3,11 @@ import React from 'react';
 import Time from './styles';
 
 type ClockType = {
-  date: Date;
+  date: string;
 }
 
 const Clock = ({ date }: ClockType) => {
-  const time = date.toLocaleTimeString('ru-RU');
+  const time = new Date(date).toLocaleTimeString('ru-RU');
   return <Time>{time}</Time>;
 };
 
