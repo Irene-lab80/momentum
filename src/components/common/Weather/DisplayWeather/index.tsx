@@ -4,7 +4,22 @@ import {
   Container, Description, Temperature, Wind, WeatherIcon, Row
 } from './styles';
 
-const DisplayWeather = ({ data }: any) => {
+type DisplayWeatherType = {
+  data: {
+    data: {
+      main: {temp: number, humidity: number},
+      wind: {speed: number, deg: number},
+      name: string,
+      sys: { country: string},
+      weather: [{
+        description: string,
+        icon: string
+      }]
+    }
+  }
+}
+
+const DisplayWeather = ({ data }: DisplayWeatherType) => {
   const temperature = data.data.main.temp;
   const { humidity } = data.data.main;
   const windSpeed = data.data.wind.speed;
