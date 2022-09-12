@@ -40,7 +40,10 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    const timerId = setInterval(() => dispatch(timeOfDayChange(getTimeOfDay(new Date(time).getHours()))), 1000);
+    const timerId = setInterval(() => {
+      dispatch(timeOfDayChange(getTimeOfDay(new Date(time).getHours())));
+    }, 1000);
+    console.log(timeOfDayChange(getTimeOfDay(new Date(time).getHours())));
     return function cleanup() {
       clearInterval(timerId);
     };

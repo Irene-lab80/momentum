@@ -6,11 +6,11 @@ import Next from '../Next';
 import Previous from '../Previous';
 
 type AudioControlsType = {
-  isPlaying: any;
-  play: any;
-  pause: any;
-  previous: any;
-  next: any;
+  isPlaying: boolean;
+  play: () => void;
+  pause: () => void;
+  previous: () => void;
+  next: () => void;
 }
 
 const AudioControls = ({
