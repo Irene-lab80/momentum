@@ -4,7 +4,11 @@ import {
   Container, Item
 } from './styles';
 
-const DisplayHourlyWeather = ({ data }: any) => (
+type DisplayHourlyWeatherType ={
+  data: {data: {list: []}}
+}
+
+const DisplayHourlyWeather = ({ data } : DisplayHourlyWeatherType) => (
   <Container>
     {data ? data.data.list.map((el: any) => (
       <Item key={el.dt}>

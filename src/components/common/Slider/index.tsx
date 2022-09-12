@@ -14,7 +14,6 @@ type ImageSliderType = {
 
 const ImageSlider = ({ timeOfDay }: ImageSliderType) => {
   const [imgArray, setimgArray] = useState<any>();
-  const [isLoading, setIsLoading] = useState(true);
 
   const imgAPI = async () => {
     let arrayOfImages = [];
