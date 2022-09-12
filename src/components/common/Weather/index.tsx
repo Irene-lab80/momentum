@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, SyntheticEvent } from 'react';
 import { Link } from 'react-router-dom';
 import NewTabSVG from '../svg/NewTabSVG';
 import DisplayWeather from './DisplayWeather';
@@ -36,7 +36,7 @@ const Weather = () => {
     try {
       const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=${'en'}&appid=${APIKEY}&units=metric`);
       data = response.data;
-      console.log(data);
+      // console.log(data);
       setWeatherData({ data });
     } catch (error) {
       setWeatherData(null);
@@ -45,7 +45,7 @@ const Weather = () => {
     }
   };
 
-  const weatherHandler = (e: any) => {
+  const weatherHandler = (e: SyntheticEvent) => {
     e.preventDefault();
     getWeatherData();
   };
