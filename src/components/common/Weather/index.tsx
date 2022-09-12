@@ -1,5 +1,7 @@
 import axios from 'axios';
-import React, { useEffect, useState, SyntheticEvent } from 'react';
+import React, {
+  useEffect, useState, SyntheticEvent, FormEventHandler
+} from 'react';
 import { Link } from 'react-router-dom';
 import NewTabSVG from '../svg/NewTabSVG';
 import DisplayWeather from './DisplayWeather';
@@ -45,7 +47,7 @@ const Weather = () => {
     }
   };
 
-  const weatherHandler = (e: SyntheticEvent) => {
+  const weatherHandler = (e: SyntheticEvent<Element, Event>) => {
     e.preventDefault();
     getWeatherData();
   };

@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import { Input } from '../styles';
 
-const WeatherInput = ({ weatherHandler, city, handleChange }: any) => (
+type WeatherInputType = {
+  weatherHandler: (e: SyntheticEvent<Element, Event>) => void;
+  city: string;
+  handleChange: any;
+}
+
+const WeatherInput = ({ weatherHandler, city, handleChange }: WeatherInputType) => (
   <form onSubmit={weatherHandler}>
     <Input type="text" name="city" value={city} placeholder="City" onChange={handleChange} />
   </form>
