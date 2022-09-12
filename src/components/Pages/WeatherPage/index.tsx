@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ImageSlider from '../../common/Slider';
-import SliderContainerComponent from '../../common/SliderContainerComponent';
+import SliderContainerComponent from '../../common/SliderContainer';
 import ArrowBackSVG from '../../common/svg/ArrowBackSVG';
 import Weather from '../../common/Weather';
 import DisplayHourlyWeather from '../../common/Weather/DisplayHourlyWeather';

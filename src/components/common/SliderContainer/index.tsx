@@ -2,15 +2,15 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectTimeOfDay } from '../../../store/timeSlice';
 import ImageSlider from '../Slider';
-import SliderContainer from './styles';
+import Container from './styles';
 
-const SliderContainerComponent = () => {
+const SliderContainer = () => {
   const timeOfDay = useSelector(selectTimeOfDay);
   return (
-    <SliderContainer>
+    <Container>
       <ImageSlider timeOfDay={timeOfDay} />
-    </SliderContainer>
+    </Container>
   );
 };
 
-export default SliderContainerComponent;
+export default SliderContainer;

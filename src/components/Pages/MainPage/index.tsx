@@ -12,7 +12,7 @@ import CurrentDate from '../../common/CurrentDate';
 import Greeting from '../../common/Greeting';
 import Player from '../../common/Player';
 import QuoteGenerator from '../../common/QuoteGenerator';
-import SliderContainerComponent from '../../common/SliderContainerComponent';
+import SliderContainerComponent from '../../common/SliderContainer';
 import Weather from '../../common/Weather';
 
 const tracks = [

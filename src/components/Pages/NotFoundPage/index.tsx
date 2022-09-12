@@ -1,10 +1,10 @@
 import React from 'react';
-import SliderContainerComponent from '../../common/SliderContainerComponent';
+import SliderContainer from '../../common/SliderContainer';
 import { Container, Text } from './styles';
 
 const NotFoundPage = () => (
   <>
-    <SliderContainerComponent />
+    <SliderContainer />
     <Container>
       <Text>Nothing is here</Text>
     </Container>
