@@ -6,8 +6,6 @@ type ClockType = {
 }
 
 const Greeting = ({ timeOfDay }: ClockType) => {
-  // greeting
-
   // name
   const [name, setName] = useState(() => {
     const saved = localStorage.getItem('name') as string;
@@ -21,10 +19,16 @@ const Greeting = ({ timeOfDay }: ClockType) => {
 
   return (
     <Container>
-      <PartOfDay>
-        {`Good ${timeOfDay}, `}
-      </PartOfDay>
-      <UserName type="text" placeholder="[Enter name]" value={name} onChange={(e) => setName(e.target.value)} />
+      {timeOfDay
+        ? (
+          <>
+            <PartOfDay>
+              {`Good ${timeOfDay}, `}
+            </PartOfDay>
+            <UserName type="text" placeholder="[Enter name]" value={name} onChange={(e) => setName(e.target.value)} />
+          </>
+        )
+        : null}
     </Container>
   );
 };
