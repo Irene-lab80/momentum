@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import GlobalStyles from './styles/global';
-import NotFoundPage from './components/Pages/NotFoundPage';
 import MainPageContainer from './components/Containers/MainPageContainer';
 import WeatherPageContainer from './components/Pages/WeatherPage';
+import NotFoundPageContainer from './components/Containers/NotFoundPageContainer';
 
 const App = () => (
   <div className="App">
@@ -11,7 +11,7 @@ const App = () => (
     <Routes>
       <Route path="/" element={<MainPageContainer />} />
       <Route path="weather" element={<WeatherPageContainer />} />
-      <Route path="*" element={<NotFoundPage />} />
+      <Route path="*" element={<NotFoundPageContainer />} />
     </Routes>
   </div>
 );
