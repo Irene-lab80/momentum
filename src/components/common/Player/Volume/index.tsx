@@ -10,7 +10,7 @@ const Volume = ({ onChange, value }: VolumeType) => (
   <Wrapper>
     <Slider
       type="range"
-      min="1"
+      min="0"
       max="100"
       defaultValue="80"
       id="myRange"
