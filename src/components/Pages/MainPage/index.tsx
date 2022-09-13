@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectTime, selectTimeOfDay, timeChange, timeOfDayChange
+  selectTime, selectTimeOfDay, timeChange
 } from '../../../store/timeSlice';
 import {
   Footer, Header, Main, MainScreen
@@ -16,34 +16,14 @@ import Weather from '../../common/Weather';
 import tracks from '../../helpers/tracklist';
 
 const MainPage = () => {
-  // DATE
   const time = useSelector(selectTime);
   const timeOfDay = useSelector(selectTimeOfDay);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const timerId = setInterval(() => {
-      dispatch(timeChange(new Date().toString()));
+      dispatch(timeChange(new Date()));
     }, 1000);
-    return function cleanup() {
-      clearInterval(timerId);
-    };
-  }, [dispatch]);
-
-  // time of day
-  const getTimeOfDay = (hrs: number): 'night' | 'morning' | 'afternoon' | 'evening' | undefined | 'error' => {
-    if (hrs < 6) return 'night';
-    if (hrs >= 6 && hrs < 12) return 'morning';
-    if (hrs >= 12 && hrs < 17) return 'afternoon';
-    if (hrs >= 17 && hrs <= 23) return 'evening';
-    return 'error';
-  };
-
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      dispatch(timeOfDayChange(getTimeOfDay(new Date(time).getHours())));
-    }, 1000);
-    console.log(timeOfDayChange(getTimeOfDay(new Date(time).getHours())));
     return function cleanup() {
       clearInterval(timerId);
     };
