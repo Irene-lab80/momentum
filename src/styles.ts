@@ -22,6 +22,9 @@ export const Header = styled.header`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 768px) {
+   display: none;
+  }
 `;
 
 export const Main = styled.main`
