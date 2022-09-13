@@ -15,10 +15,14 @@ import SliderContainer from '../../common/SliderContainer';
 import Weather from '../../common/Weather';
 
 type MainPageType = {
-  time: any,
-  tracks: any,
-  timeOfDay: any
+  time: string,
+  tracks: {
+    url: string;
+    title: string;
+  }[],
+  timeOfDay: string
 }
+
 const MainPage = ({ time, tracks, timeOfDay }: MainPageType) => (
   <>
     <SliderContainer />

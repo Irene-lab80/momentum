@@ -4,7 +4,7 @@ import { Input } from '../styles';
 type WeatherInputType = {
   weatherHandler: (e: SyntheticEvent<Element, Event>) => void;
   city: string;
-  handleChange: any;
+  handleChange: (e: SyntheticEvent) => void;
 }
 
 const WeatherInput = ({ weatherHandler, city, handleChange }: WeatherInputType) => (

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {
-  useEffect, useState, SyntheticEvent, FormEventHandler
+  useEffect, useState, SyntheticEvent
 } from 'react';
 import { Link } from 'react-router-dom';
 import NewTabSVG from '../svg/NewTabSVG';
@@ -78,7 +78,7 @@ const Weather = () => {
       <Link className={display} to="weather" target="_blank" rel="noopener noreferrer">
         <NewTabSVG />
       </Link>
-      <WeatherInput weatherHandler={weatherHandler} city={city} handleChange={(e: any) => handleChange(e)} />
+      <WeatherInput weatherHandler={weatherHandler} city={city} handleChange={(e: SyntheticEvent) => handleChange(e)} />
       {weatherData !== null && city !== '' ? <DisplayWeather data={weatherData} /> : <Message>{errorText}</Message>}
     </Container>
   );
