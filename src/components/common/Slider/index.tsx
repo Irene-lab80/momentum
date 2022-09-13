@@ -1,14 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Loader from '../Loader';
-
 import Arrow from '../svg/Arrow';
 import {
   ArrowButton, Slider, Slide
 } from './styles';
 
 type ImageSliderType = {
-  // slides: { url: string; title: string; }[];
   timeOfDay: string | undefined;
 }
 
