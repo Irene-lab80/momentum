@@ -1,12 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import SliderContainer from '../../common/SliderContainer';
-import ArrowBackSVG from '../../common/svg/ArrowBackSVG';
-import DisplayHourlyWeather from '../../common/Weather/DisplayHourlyWeather';
-import { Screen, ArrowContainer } from './styles';
+import WeatherPage from '../../Containers/WeatherPageContainer';
 
-const WeatherPage = () => {
+const WeatherPageContainer = () => {
   const APIKEY = '31d9b62edfb8c214c2eabeef6f13b51c';
   const [errorText, setErrorText] = useState('');
   // set query
@@ -51,18 +47,8 @@ const WeatherPage = () => {
   }, []);
 
   return (
-    <>
-      <SliderContainer />
-      <Screen>
-        <ArrowContainer>
-          <Link to="/">
-            <ArrowBackSVG />
-          </Link>
-        </ArrowContainer>
-        <DisplayHourlyWeather data={weatherData} />
-      </Screen>
-    </>
+    <WeatherPage data={weatherData} />
   );
 };
 
-export default WeatherPage;
+export default WeatherPageContainer;
