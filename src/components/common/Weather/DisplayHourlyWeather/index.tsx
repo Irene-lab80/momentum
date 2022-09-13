@@ -27,7 +27,7 @@ const DisplayHourlyWeather = ({ data } : DisplayHourlyWeatherType) => (
         <div>{`${Math.floor(el.wind.speed)} m/s`}</div>
         <div>{`${el.main.humidity} %`}</div>
       </Item>
-    )) : <>loading</>}
+    )) : <>Nothing to dispaly</>}
   </Container>
 );
 export default DisplayHourlyWeather;

@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+display: flex;
   padding: 15px;
   color: white;
   display: flex;
   line-height: 28px;
   gap: 5px;
   overflow-x: scroll;
-  width: 70vw;
+  width: 90vw;
   height: 40vh;
   box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
   border-radius: 5px;

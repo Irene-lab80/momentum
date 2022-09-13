@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SliderContainer from '../../common/SliderContainer';
 import ArrowBackSVG from '../../common/svg/ArrowBackSVG';
-import Weather from '../../common/Weather';
 import DisplayHourlyWeather from '../../common/Weather/DisplayHourlyWeather';
 import { Screen, ArrowContainer } from './styles';
 
@@ -61,7 +60,6 @@ const WeatherPage = () => {
           </Link>
         </ArrowContainer>
         <DisplayHourlyWeather data={weatherData} />
-        <Weather />
       </Screen>
     </>
   );

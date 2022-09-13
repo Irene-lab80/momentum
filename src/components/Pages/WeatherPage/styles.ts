@@ -15,6 +15,5 @@ export const Screen = styled.div`
   position: absolute;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  padding-top: 20px;
+  padding: 20px;
 `;
