@@ -40,7 +40,7 @@ const DisplayWeather = ({ data }: DisplayWeatherType) => {
         {`Right now in ${cityName}, ${countryName}`}
       </Row>
       <Row>
-        <WeatherIcon src={`http://openweathermap.org/img/wn/${data.data.weather[0].icon}.png`} alt="weather icon" />
+        <WeatherIcon src={`https://openweathermap.org/img/wn/${data.data.weather[0].icon}.png`} alt="weather icon" />
         <Temperature>
           {`${Math.floor(temperature)} °C`}
         </Temperature>
