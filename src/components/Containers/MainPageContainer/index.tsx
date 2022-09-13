@@ -13,7 +13,7 @@ const MainPageContainer = () => {
 
   useEffect(() => {
     const timerId = setInterval(() => {
-      dispatch(timeChange(new Date()));
+      dispatch(timeChange(new Date().toString()));
     }, 1000);
     return function cleanup() {
       clearInterval(timerId);
