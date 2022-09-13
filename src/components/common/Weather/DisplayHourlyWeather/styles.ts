@@ -22,6 +22,7 @@ display: flex;
   ::-webkit-scrollbar-thumb {
     background-color: #FFFFFF;
     border-radius: 100px;
+    cursor: pointer;
   }
 `;
 

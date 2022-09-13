@@ -52,6 +52,12 @@ const Player = ({ trackList }: playerType) => {
     }
   }, [audio?.duration, audio?.currentTime]);
 
+  useEffect(() => {
+    if (audio) {
+      play();
+    }
+  }, [isPlaying]);
+
   // eslint-disable-next-line consistent-return
   useEffect(() => {
     setAudio(new Audio(trackList[curTrack].url));
