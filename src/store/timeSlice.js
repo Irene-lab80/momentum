@@ -4,7 +4,7 @@ export const timeSlice = createSlice({
   name: 'time',
   initialState: {
     time: new Date(),
-    timeOfDay: 'morning',
+    // timeOfDay: 'morning',
   },
   reducers: {
     timeChange: (state, action) => {

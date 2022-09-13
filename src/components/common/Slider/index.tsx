@@ -7,26 +7,28 @@ import {
 } from './styles';
 
 type ImageSliderType = {
-  timeOfDay: string | undefined;
+  timeOfDay: string;
 }
 
 const ImageSlider = ({ timeOfDay }: ImageSliderType) => {
   const [imgArray, setimgArray] = useState<any>();
 
   const imgAPI = async () => {
-    let arrayOfImages = [];
-    try {
-      const data = await axios.get(`https://api.unsplash.com/search/photos?page=1&per_page=10&query=${timeOfDay}&orientation=landscape&client_id=3eKMU9-jHoMz-hErq6gHhkhITGFRkq5tE2gYgXSnctA`);
-      arrayOfImages = data.data.results;
-      console.log(arrayOfImages);
-    } catch (error) {
-      console.log(error);
-    }
+    if (timeOfDay !== undefined) {
+      let arrayOfImages = [];
+      try {
+        const data = await axios.get(`https://api.unsplash.com/search/photos?page=1&per_page=10&query=${timeOfDay}&orientation=landscape&client_id=3eKMU9-jHoMz-hErq6gHhkhITGFRkq5tE2gYgXSnctA`);
+        arrayOfImages = data.data.results;
+        // console.log(arrayOfImages);
+      } catch (error) {
+        console.log(error);
+      }
 
-    try {
-      setimgArray(arrayOfImages);
-    } catch (error) {
-      console.log(error);
+      try {
+        setimgArray(arrayOfImages);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   useEffect(() => {
